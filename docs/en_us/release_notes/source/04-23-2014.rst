@@ -1,0 +1,61 @@
+###################################
+April 23, 2014
+###################################
+
+The following information reflects what is new in the edX Platform as of April
+23, 2014.  See previous pages in this document for a history of changes.
+
+**************************
+edX Documentation
+**************************
+
+You can access the `edX Status <http://status.edx.org/>`_ page to get an up-
+to-date status for all services on edx.org and edX Edge. The page also includes
+the Twitter feed for @edXstatus, which the edX Operations team uses to post
+updates.
+
+You can access the public edX `roadmap <https://edx-
+wiki.atlassian.net/wiki/display/OPENPROD/Open+EdX+Public+Product+Roadmap>`_ for
+details about the currently planned product direction.
+
+The following documentation is available:
+
+* `Building and Running an edX Course.
+  <http://edx.readthedocs.org/projects/ca/en/latest/>`_ You can also download
+  the guide as a PDF from the edX Studio user interface.
+
+  Recent changes include: 
+
+  * Updated `Testing Your Course <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/view_course_content.html#testing-your-course>`_ to include a section on how to `Switch Between Studio and Your Live Course <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/view_course_content.html#view-your-live-course>_`.
+
+  * Updated `Transcripts in Additional Languages <http://edx.readthedocs.org/projects/ca/en/latest/creating_content/create_video.html#transcripts-in-additional-languages>`_ in `Working with Video Components <http://edx.readthedocs.org/projects/ca/en/latest/creating_content/create_video.html>`_.
+
+  * In `Discussions <http://edx.readthedocs.org/projects/ca/en/latest/running_course/discussions.html#discussions>`_, corrected the steps to “Create” Discussion Categories”.
+
+  * Updated the `Bulk Email <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/course_launching.html#bulk-email>`_ section with information about the dashboard option to opt out of course email.
+      
+
+* `edX Data Documentation
+  <http://edx.readthedocs.org/projects/devdata/en/latest/>`_
+
+* `edX Platform Developer Documentation
+  <http://edx.readthedocs.org/projects/devdata/en/latest/>`_
+
+
+*************
+edX Studio
+*************
+
+* 
+
+***************************************
+edX Learning Management System
+***************************************
+
+* A problem that prevented MathJax from being displayed properly when the problem answer was shown is now resolved.(BLD-993)
+
+===========================
+Accessibility Improvements
+===========================
+
+* 
