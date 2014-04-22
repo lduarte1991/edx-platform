@@ -231,3 +231,89 @@ class InlineDiscussionThreadPage(DiscussionThreadPage):
             "Thread expanded"
         ).fulfill()
 
+
+class DiscussionUserProfilePage(CoursePage):
+    def __init__(self, browser, course_id, user_id, page=1):
+        super(DiscussionUserProfilePage, self).__init__(browser, course_id)
+        self.url_path = "discussion/forum/dummy/users/{}?page={}".format(user_id, page)
+        self._selector = ''.join([
+                'section.discussion-user-threads',
+                '[data-user-info*=" \\"id\\": \\"{}\\", "]'.format(user_id),
+                '[data-course-id="{}"]'.format(course_id)
+            ])
+        self.page = page
+
+    # FIXME: DRY
+    def is_browser_on_page(self):
+        return self.q(css=self._selector).present
+
+    # FIXME: DRY
+    def _find_within(self, selector):
+        """
+        Returns a query corresponding to the given CSS selector within the scope
+        of this thread page
+        """
+        return self.q(css=self._selector + " " + selector)
+
+    # FIXME: DRY
+    def _get_element_text(self, selector):
+        """
+        Returns the text of the first element matching the given selector, or
+        None if no such element exists
+        """
+        text_list = self._find_within(selector).text
+        return text_list[0] if text_list else None
+
+    # FIXME: DRY
+    def _is_element_visible(self, selector):
+        query = self._find_within(selector)
+        return query.present and query.visible
+
+    def get_shown_thread_ids(self):
+        elems = self.q(css="article.discussion-thread[id*=\"thread_\"]")
+        return [elem.get_attribute("id")[7:] for elem in elems]
+
+    def get_pagination_current_page(self):
+        return int(self.q(css="nav.discussion-paginator li.current-page").text[0])
+
+    def _check_pager(self, text, page_number=None):
+        """
+        returns True if 'text' matches the text in any of the pagination elements.  If
+        page_number is provided, only return True if the element points to that result
+        page.
+        """
+        elems = self.q(css="a.discussion-pagination[data-page-number]")
+        pager_dict = dict((elem.text, int(elem.get_attribute('data-page-number'))) for elem in elems)
+        return text in pager_dict and (page_number is None or pager_dict[text] == page_number)
+
+    def get_clickable_pages(self):
+        return sorted([
+            int(elem.get_attribute('data-page-number'))
+            for elem in self.q(css="a.discussion-pagination[data-page-number]")
+            if str(elem.text).isdigit()
+        ])
+
+    def is_prev_button_shown(self, page_number=None):
+        return self._check_pager(u'< Previous', page_number)
+
+    def is_next_button_shown(self, page_number=None):
+        return self._check_pager(u'Next >', page_number)
+
+    def click_next_page(self):
+        current = self.get_pagination_current_page()
+        next = [elem for elem in self.q(css="a.discussion-pagination[data-page-number]") if elem.text == 'Next >']
+        next[0].click()
+        EmptyPromise(
+            lambda: self.get_pagination_current_page() == current + 1,
+            "Navigated to next page"
+        ).fulfill()
+
+    def click_prev_page(self):
+        current = self.get_pagination_current_page()
+        prev = [elem for elem in self.q(css="a.discussion-pagination[data-page-number]") if elem.text == '< Previous']
+        prev[0].click()
+        EmptyPromise(
+            lambda: self.get_pagination_current_page() == current - 1,
+            "Navigated to previous page"
+        ).fulfill()
+

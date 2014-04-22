@@ -87,3 +87,21 @@ class SingleThreadViewFixture(object):
                 "comments": json.dumps(self._get_comment_map())
             }
         )
+
+class UserProfileViewFixture(object):
+
+    def __init__(self, user_id, username, threads):
+        self.user_id = user_id
+        self.username = username
+        self.threads = threads
+
+    def push(self):
+        """
+        Push the data to the stub comments service.
+        """
+        requests.put(
+            '{}/set_config'.format(COMMENTS_STUB_URL),
+            data={
+                "active_threads": json.dumps(self.threads),
+            }
+        )
