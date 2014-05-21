@@ -332,9 +332,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 			var elem = jQuery(event.target).parents('.annotator-hl').andSelf();
 			//if there is a opened annotation then show the new annotation mouse over
 			if (typeof annotator!='undefined' && elem.hasClass("annotator-hl") && !this.isDrawing){
-				/*jQuery(event.target.parentNode).find('.annotator-hl').map(function() {
+				jQuery(event.target.parentNode).find('.annotator-hl').map(function() {
 					return this.style.background = 'rgba(255, 255, 10, 0.3)';
-				});*/
+				});
 			}
 		},
 		/* Utilities */
@@ -782,6 +782,47 @@ OpenSeadragonAnnotation = function (element, options) {
     
     //Set annotator.editor.OpenSeaDragon by default
     this.annotator.editor.OpenSeaDragon=-1;
+
+    var self = this;
+    document.addEventListener("fullscreenchange", function () {
+    	if (document.fullscreen){ 
+    		self.viewer.removeControl(self.viewer.annotatorControl);
+    		self.annotator.viewer.options.readOnly = true;
+    	} else{ 
+    		self.viewer.addControl(self.viewer.annotatorControl, {anchor: OpenSeadragon.ControlAnchor.TOP_LEFT});
+    		self.annotator.viewer.options.readOnly = false;
+    	}
+	}, false);
+ 
+	document.addEventListener("mozfullscreenchange", function () {
+    	if (document.mozFullScreen){ 
+    		self.viewer.removeControl(self.viewer.annotatorControl);
+    		self.annotator.viewer.options.readOnly = true;
+    	} else{ 
+    		self.viewer.addControl(self.viewer.annotatorControl, {anchor: OpenSeadragon.ControlAnchor.TOP_LEFT});
+    		self.annotator.viewer.options.readOnly = false;
+    	}
+	}, false);
+ 
+	document.addEventListener("webkitfullscreenchange", function () {
+    	if (document.webkitIsFullScreen){ 
+    		self.viewer.removeControl(self.viewer.annotatorControl);
+    		self.annotator.viewer.options.readOnly = true;
+    	} else{ 
+    		self.viewer.addControl(self.viewer.annotatorControl, {anchor: OpenSeadragon.ControlAnchor.TOP_LEFT});
+    		self.annotator.viewer.options.readOnly = false;
+    	}
+	}, false);
+ 
+	document.addEventListener("msfullscreenchange", function () {
+    	if (document.msFullscreenElement){ 
+    		self.viewer.removeControl(self.viewer.annotatorControl);
+    		self.annotator.viewer.options.readOnly = true;
+    	} else{ 
+    		self.viewer.addControl(self.viewer.annotatorControl, {anchor: OpenSeadragon.ControlAnchor.TOP_LEFT});
+    		self.annotator.viewer.options.readOnly = false;
+    	}
+    }, false);
     
     this.options = options;
 

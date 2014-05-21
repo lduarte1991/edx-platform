@@ -34,12 +34,12 @@ Annotator.Plugin.RichText = (function(_super) {
 			skin: 'studio-tmce4',
 			formats: {
           		code: {
-            	inline: 'code'
+            		inline: 'code'
           		}
           	},
           	codemirror: {
-          		path: "static/js/vendor"
-        	},
+            	path: "/static/js/vendor"
+          	},
 			plugins: "image link codemirror",
 			menubar: false,
 			toolbar_items_size: 'small',
