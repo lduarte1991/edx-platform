@@ -837,6 +837,8 @@ main_vendor_js = [
     'js/vendor/ova/reply-annotator.js',
     'js/vendor/ova/tags-annotator.js',
     'js/vendor/ova/flagging-annotator.js',
+    'js/vendor/ova/openseadragon.js',
+    'js/vendor/ova/OpenSeaDragonAnnotation.js',
     'js/vendor/ova/jquery-Watch.js',
     'js/vendor/ova/ova.js',
     'js/vendor/ova/catch/js/catch.js',

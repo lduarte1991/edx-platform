@@ -130,6 +130,7 @@ Annotator.Plugin.RichText = (function(_super) {
 		        }
 		    });
 		};
+		console.log("About to initialize tinymce");
 		tinymce.init(this.options.tinymce);
 	};
 	
