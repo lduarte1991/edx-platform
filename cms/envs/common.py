@@ -334,6 +334,12 @@ PIPELINE_CSS = {
         ],
         'output_filename': 'css/cms-style-vendor-tinymce-skin.css',
     },
+    'style-vendor-annotator' :{
+        'source_filenames':[
+            'css/vendor/ova/annotator.css',
+        ],
+        'output_filename': 'css/lms-style-vendor-ova-annotator.css',
+    },
     'style-app': {
         'source_filenames': [
             'sass/style-app.css',

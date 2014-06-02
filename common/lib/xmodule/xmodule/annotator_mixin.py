@@ -6,6 +6,7 @@ from lxml import etree
 from urlparse import urlparse
 from os.path import splitext, basename
 from HTMLParser import HTMLParser
+from pkg_resources import resource_string
 
 
 def get_instructions(xmltree):
@@ -53,3 +54,34 @@ def html_to_text(html):
     htmlstripper = MLStripper()
     htmlstripper.feed(html)
     return htmlstripper.get_data()
+
+
+ANNOTATOR_COMMON_JS = [
+    resource_string(__name__, "js/src/ova/annotator-full.js"),
+    resource_string(__name__, "js/src/ova/annotator-full-firebase-auth.js"),
+    resource_string(__name__, "js/src/ova/rangeslider.js"),
+    resource_string(__name__, "js/src/ova/share-annotator.js"),
+    resource_string(__name__, "js/src/ova/richText-annotator.js"),
+    resource_string(__name__, "js/src/ova/reply-annotator.js"),
+    resource_string(__name__, "js/src/ova/tags-annotator.js"),
+    resource_string(__name__, "js/src/ova/flagging-annotator.js"),
+    resource_string(__name__, "js/src/ova/diacritic-annotator.js"),
+    resource_string(__name__, "js/src/ova/openseadragon.js"),
+    resource_string(__name__, "js/src/ova/OpenSeaDragonAnnotation.js"),
+    resource_string(__name__, "js/src/ova/ova.js"),
+    resource_string(__name__, "js/src/ova/catch/js/handlebars-1.1.2.js"),
+    resource_string(__name__, "js/src/ova/catch/js/catch.js"),
+]
+
+
+ANNOTATOR_COMMON_CSS = [
+    resource_string(__name__, 'css/ova/edx-annotator.css'),
+    resource_string(__name__, 'css/ova/rangeslider.css'),
+    resource_string(__name__, 'css/ova/share-annotator.css'),
+    resource_string(__name__, 'css/ova/richText-annotator.css'),
+    resource_string(__name__, 'css/ova/diacritic-annotator.css'),
+    resource_string(__name__, 'css/ova/tags-annotator.css'),
+    resource_string(__name__, 'css/ova/flagging-annotator.css'),
+    resource_string(__name__, 'css/ova/ova.css'),
+    resource_string(__name__, 'js/src/ova/catch/css/main.css'),
+]
