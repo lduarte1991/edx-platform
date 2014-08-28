@@ -28,14 +28,16 @@ class StudentNotes
         # Get id and name user    
         idUdiv = $(event.target).parent().find(".idU")[0]
         idDUdiv = $(event.target).parent().find(".idDU")[0]
+        idUEmaildiv = $(event.target).parent().find(".idUEmail")[0]
         idUdiv = (if typeof idUdiv isnt "undefined" then idUdiv.innerHTML else "")
         idDUdiv = (if typeof idDUdiv isnt "undefined" then idDUdiv.innerHTML else "")
+        idUEmaildiv = (if typeof idUEmaildiv isnt "undefined" then idUEmaildiv.innerHTML else "")
         
         options = 
             optionsAnnotator:
                 permissions:
                     user:
-                        id: idUdiv
+                        id: idUEmaildiv
                         name: idDUdiv
 
                     userString: (user) ->
@@ -44,7 +46,17 @@ class StudentNotes
 
                     userId: (user) ->
                         return user.id  if user and user.id
-                        user 
+                        user
+
+                    permissions: 
+                        'read':   [],
+                        'update': [idUEmaildiv],
+                        'delete': [idUEmaildiv],
+                        'admin':  [idUEmaildiv]
+
+                    showViewPermissionsCheckbox: false
+
+                    showEditPermissionsCheckbox: false
                 auth: 
                     token: token
 
