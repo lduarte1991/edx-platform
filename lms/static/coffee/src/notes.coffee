@@ -69,6 +69,7 @@ class StudentNotes
             optionsOVA: 
                 posBigNew:'none'
                 NumAnnotations:20
+            optionsNotes: true
             optionsRichText: 
                 tinymce:
                     selector: "li.annotator-item textarea"

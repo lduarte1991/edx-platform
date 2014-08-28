@@ -2407,7 +2407,7 @@ OpenVideoAnnotation.Annotator = function (element, options) {
     if (typeof Annotator.Plugin["Reply"] === 'function') 
         this.annotator.addPlugin("Reply");
             
-    if (typeof Annotator.Plugin["Flagging"] === 'function') 
+    if (typeof Annotator.Plugin["Flagging"] === 'function' && typeof options.optionsNotes === 'undefined') 
         this.annotator.addPlugin("Flagging");
 
     if (typeof options.optionsAnnotator.highlightTags !== 'undefined')
