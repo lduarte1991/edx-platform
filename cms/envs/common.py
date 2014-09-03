@@ -375,17 +375,8 @@ PIPELINE_CSS = {
     'style-xmodule-annotations': {
         'source_filenames': [
             'css/vendor/ova/annotator.css',
-            'css/vendor/ova/edx-annotator.css',
             'css/vendor/ova/video-js.min.css',
-            'css/vendor/ova/rangeslider.css',
-            'css/vendor/ova/share-annotator.css',
-            'css/vendor/ova/richText-annotator.css',
-            'css/vendor/ova/tags-annotator.css',
-            'css/vendor/ova/flagging-annotator.css',
-            'css/vendor/ova/diacritic-annotator.css',
-            'css/vendor/ova/grouping-annotator.css',
-            'css/vendor/ova/ova.css',
-            'js/vendor/ova/catch/css/main.css'
+            'css/vendor/ova/token-input.css',
         ],
         'output_filename': 'css/cms-style-xmodule-annotations.css',
     },
