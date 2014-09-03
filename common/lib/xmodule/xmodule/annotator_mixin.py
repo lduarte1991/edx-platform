@@ -88,7 +88,7 @@ def html_to_text(html):
     htmlstripper.feed(html)
     return htmlstripper.get_data()
 
-def ANNOTATOR_COMMON_JS = [
+ANNOTATOR_COMMON_JS = [
 	resource_string(__name__, 'js/src/ova/annotator-full.js'),
 	resource_string(__name__, 'js/src/ova/annotator-full-firebase-auth.js'),
 	resource_string(__name__, 'js/src/ova/rangeslider.js'),
@@ -100,18 +100,17 @@ def ANNOTATOR_COMMON_JS = [
 	resource_string(__name__, 'js/src/ova/diacritic-annotator.js'),
 	resource_string(__name__, 'js/src/ova/grouping-annotator.js'),
 	resource_string(__name__, 'js/src/ova/openseadragon.js'),
-	resource_string(__name__, 'js/src/ova/OpenSeaDragonAnnotationjs'),
+	resource_string(__name__, 'js/src/ova/OpenSeaDragonAnnotation.js'),
 	resource_string(__name__, 'js/src/ova/ova.js'),
 	resource_string(__name__, 'js/src/ova/catch/js/catch.js'),
 	resource_string(__name__, 'js/src/ova/catch/js/handlebars-1.1.2.js')
 ]
 
-def ANNOTATOR_COMMON_CSS = [
+ANNOTATOR_COMMON_CSS = [
 	resource_string(__name__, 'css/ova/edx-annotator.css'),
 	resource_string(__name__, 'css/ova/rangeslider.css'),
 	resource_string(__name__, 'css/ova/share-annotator.css'),
 	resource_string(__name__, 'css/ova/richText-annotator.css'),
-	resource_string(__name__, 'css/ova/tags-annotator.css'),
 	resource_string(__name__, 'css/ova/flagging-annotator.css'),
 	resource_string(__name__, 'css/ova/diacritic-annotator.css'),
 	resource_string(__name__, 'css/ova/grouping-annotator.css'),

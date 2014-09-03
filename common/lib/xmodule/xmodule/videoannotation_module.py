@@ -7,7 +7,7 @@ from pkg_resources import resource_string
 from xmodule.x_module import XModule
 from xmodule.raw_module import RawDescriptor
 from xblock.core import Scope, String
-from xmodule.annotator_mixin import get_instructions, get_extension
+from xmodule.annotator_mixin import get_instructions, get_extension, ANNOTATOR_COMMON_JS, ANNOTATOR_COMMON_CSS
 from xmodule.annotator_token import retrieve_token
 from xblock.fragment import Fragment
 
@@ -88,11 +88,11 @@ class VideoAnnotationModule(AnnotatableFields, XModule):
             resource_string(__name__, 'js/src/html/display.coffee'),
             resource_string(__name__, 'js/src/annotatable/display.coffee'),
         ],
-        'js': [
+        'js': ANNOTATOR_COMMON_JS + [
             resource_string(__name__, 'js/src/collapsible.js'),
         ]
     }
-    css = {'scss': [resource_string(__name__, 'css/annotatable/display.scss')]}
+    css = {'scss': ANNOTATOR_COMMON_CSS + [resource_string(__name__, 'css/annotatable/display.scss')]}
     icon_class = 'videoannotation'
 
     def __init__(self, *args, **kwargs):
