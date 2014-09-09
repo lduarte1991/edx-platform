@@ -103,6 +103,9 @@ class TextAnnotationModule(AnnotatableFields, XModule):
         self.instructions = self._extract_instructions(xmltree)
         self.content = etree.tostring(xmltree, encoding='unicode')
         self.user_email = ""
+        self.is_course_staff = False
+        if (self.runtime.get_user_role() is 'instructor' or self.runtime.get_user_role() is 'staff'):
+        	self.is_course_staff = True
         if self.runtime.get_real_user is not None:
             self.user_email = self.runtime.get_real_user(self.runtime.anonymous_student_id).email
 
@@ -125,10 +128,13 @@ class TextAnnotationModule(AnnotatableFields, XModule):
             'default_tab': self.default_tab,
             'instructor_email': self.instructor_email,
             'annotation_mode': self.annotation_mode,
+            'is_course_staff': self.is_course_staff,
         }
         fragment = Fragment(self.system.render_template('textannotation.html', context))
-        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/tinymce.full.min.js")
-        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/jquery.tinymce.min.js")
+        if self.runtime.get_real_user is not None: # checks to see if you are in lms or studio
+	        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/tinymce.full.min.js")
+	        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/jquery.tinymce.min.js")
+	        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/ova/vjs.youtube.js")
         return fragment
 
 

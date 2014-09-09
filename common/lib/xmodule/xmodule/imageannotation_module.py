@@ -130,8 +130,10 @@ class ImageAnnotationModule(AnnotatableFields, XModule):
             'annotation_mode': self.annotation_mode,
         }
         fragment = Fragment(self.system.render_template('imageannotation.html', context))
-        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/tinymce.full.min.js")
-        fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/jquery.tinymce.min.js")
+        if self.runtime.get_real_user is not None: # checks to see if you are in lms or studio
+            fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/tinymce.full.min.js")
+            fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/tinymce/js/tinymce/jquery.tinymce.min.js")
+            fragment.add_javascript_url(self.runtime.STATIC_URL + "js/vendor/ova/vjs.youtube.js")
         return fragment
 
 
